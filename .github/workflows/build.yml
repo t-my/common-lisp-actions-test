@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: install sbcl
-        run:  apt update && apt install -yy sbcl
+        run:  sudo apt-install update && apt install -y sbcl
       - name: compile binary
         run: sbcl 
           --no-userinit 
