@@ -16,5 +16,7 @@ jobs:
           --no-userinit 
           --load main.lisp 
           --eval "(sb-ext:save-lisp-and-die \"a.out\" :toplevel 'main :executable t)"
+      - name: Zip Release
+        uses: TheDoctor0/zip-release@v0.2.1
         
         
