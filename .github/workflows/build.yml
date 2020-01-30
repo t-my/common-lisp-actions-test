@@ -4,11 +4,15 @@ on: [push]
 
 jobs:
   
-  test:
-    name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+  linux-build:
+    runs-on: ubuntu-latest
     steps: 
-      - run:  echo whoami
+      - name: install sbcl
+        run:  apt update && apt install -yy sbcl
+      - name: compile binary
+        run: sbcl 
+          --no-userinit 
+          --load main.lisp 
+          --eval "(sb-ext:save-lisp-and-die \"a.out\" :toplevel 'main :executable t)"
+        
+        
