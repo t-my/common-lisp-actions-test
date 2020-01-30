@@ -13,7 +13,8 @@ jobs:
         run:  sudo apt-get update && sudo apt-get install -y sbcl
       - name: compile binary
         run: sbcl 
-          --no-userinit 
+          --no-userinit
+          --disable-debugger 
           --load main.lisp 
           --eval "(sb-ext:save-lisp-and-die \"a.out\" :toplevel 'main :executable t)"
       - name: Zip Release
